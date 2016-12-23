@@ -32,7 +32,7 @@ angular.module('snowflakes', [])
     var xmas = new Date(2016,11,25,6,0,0,0);
     var now  = new Date();
     var target = new Date(2016,11,22,22,14,0,0);
-    $scope.message = (now < xmas) ? "No Peeking".split("\n") : "Dear James,\n\nMerry Christmas!\n\nLove,\nAndrew".split("\n");
+    $scope.message = (now < xmas) ? "No Peeking".split("\n") : "Dear James,\n\nMerry Christmas!\n\nLove,\nAndrew & Ellen".split("\n");
     $scope.link = (now < xmas) ? {message: "", src: ""} : {message: "P.S. - here's a bonus gift", src: "https://www.youtube.com/watch?v=xifmzUGpzJ8"};
     $scope.snowCover = false;
     $scope.day = new Date().getHours() > 6 && new Date().getHours() < 17;
