@@ -29,7 +29,7 @@ angular.module('snowflakes', [])
      move($scope.flakes[Math.floor(Math.random() * $scope.flakes.length)]);
     }, 250);
     
-    var xmas = new Date(2016,11,20,6,0,0,0);
+    var xmas = new Date(2016,11,25,6,0,0,0);
     var now  = new Date();
     var target = new Date(2016,11,22,22,14,0,0);
     $scope.message = (now < xmas) ? "No Peeking".split("\n") : "Dear James,\n\nMerry Christmas!\n\nLove,\nAndrew".split("\n");
