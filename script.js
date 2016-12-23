@@ -17,7 +17,7 @@ angular.module('snowflakes', [])
       $scope.flakes.push(flake);
     };
 
-    $scope.move = function(flake) {
+     var move = function(flake) {
       flake.move = false;
       flake.init.left = parseInt(100 * Math.random(),10) + "%";
       setTimeout(function() {
@@ -26,20 +26,22 @@ angular.module('snowflakes', [])
     };
 
     $interval(function() {
-     $scope.move($scope.flakes[Math.floor(Math.random() * $scope.flakes.length)]);
+     move($scope.flakes[Math.floor(Math.random() * $scope.flakes.length)]);
     }, 250);
     
-    var xmas = new Date(2016,12,20,6,0,0,0);
+    var xmas = new Date(2016,11,20,6,0,0,0);
     var now  = new Date();
-    console.log(now);
-    console.log(now > xmas);
-    $scope.message = now > xmas ? "No Peeking".split("\n") : "Dear James,\n\nMerry Christmas!\n\nLove,\nAndrew".split("\n");
-    $scope.link = now > xmas ? {message: "", src: ""} : {message: "P.S. - here's a bonus gift", src: "https://www.youtube.com/watch?v=xifmzUGpzJ8"};
+    var target = new Date(2016,11,22,22,14,0,0);
+    $scope.message = (now < xmas) ? "No Peeking".split("\n") : "Dear James,\n\nMerry Christmas!\n\nLove,\nAndrew".split("\n");
+    $scope.link = (now < xmas) ? {message: "", src: ""} : {message: "P.S. - here's a bonus gift", src: "https://www.youtube.com/watch?v=xifmzUGpzJ8"};
     $scope.snowCover = false;
-    $scope.day = true;
-    console.log($scope.message);
+    $scope.day = new Date().getHours() > 6 && new Date().getHours() < 17;
+    
+    $interval(function(){
+      $scope.day = new Date().getHours() > 6 && new Date().getHours() < 17;
+    },60*1000);
+    
     setTimeout(function(){
       $scope.snowCover = true;
-      $scope.day = false;
-    }, 60*1000);
+     }, 60*1000);
   }]);
